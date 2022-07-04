@@ -8,7 +8,6 @@ const { validate } = new Validator();
 
 const { loginSchema, signupSchema }  = require("../json-schema/user.js");
 
-router.get("/get", getMsg);
 router.post("/signup", validate({ body: signupSchema }), validation, signup);
 router.post("/login", validate({ body: loginSchema }), validation, userCheck, login);
 

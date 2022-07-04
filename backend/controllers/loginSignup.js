@@ -47,8 +47,4 @@ const signup = async (req, res) => {
     }
 };
 
-const getMsg = (req, res) => {
-    res.status(200).json({ msg: "Hello" });
-}
-
-module.exports = { login, signup, getMsg };
+module.exports = { login, signup };
