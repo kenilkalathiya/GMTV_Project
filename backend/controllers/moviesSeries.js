@@ -74,4 +74,33 @@ const getTopratedSeries = async (req, res) => {
     }
 }
 
-module.exports = { getTrendingMovies, getTrendingSeries, getUpcomingMovies, getTopratedMovies, getTopratedSeries }
+const getMovie = async (req, res) => {
+    try{
+        const { movieID } = req.params;
+        const sendData = (tmdbRes) => {
+            res.status(200).json({"movie" : tmdbRes.data});
+        }
+        await axios.get(tmdbURL + `3/movie/${movieID}?api_key=${tmdbApiKey}`)
+            .then(tmdbRes => tmdbRes ? sendData(tmdbRes) : res.status(500).json({ message: "Something went wrong in TMDB api response." }));
+    }
+    catch(error){
+        res.status(500).json({ message: "Something went wrong or Movie ID you provided does not exist." });
+    }
+}
+
+const getSeries = async (req, res) => {
+    try{
+        const { tvID } = req.params;
+        const sendData = (tmdbRes) => {
+            res.status(200).json({"series" : tmdbRes.data});
+        }
+        await axios.get(tmdbURL + `3/tv/${tvID}?api_key=${tmdbApiKey}`)
+            .then(tmdbRes => tmdbRes ? sendData(tmdbRes) : res.status(500).json({ message: "Something went wrong in TMDB api response." }));
+    }
+    catch(error){
+        res.status(500).json({ message: "Something went wrong or Series ID you provided does not exist." });
+    }
+}
+
+module.exports = { getTrendingMovies, getTrendingSeries, getUpcomingMovies, getTopratedMovies, getTopratedSeries, 
+                    getMovie, getSeries }
