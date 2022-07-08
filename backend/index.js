@@ -7,6 +7,7 @@ const connectToMongo = require("./mongo");
 // importing routes
 const loginSignupRouter = require("./routes/loginSignup");
 const moviesSeriesRouter = require("./routes/movieSeries");
+const userDetails = require("./routes/userDetails");
 
 app.use(cors());
 app.use(express.json());
@@ -14,6 +15,7 @@ app.use(express.json());
 // setting up routes
 app.use("/loginSignup", loginSignupRouter);
 app.use("/moviesSeries", moviesSeriesRouter);
+app.use("/user", userDetails);
 
 // connecting to mongodb database: moviesProject
 connectToMongo();

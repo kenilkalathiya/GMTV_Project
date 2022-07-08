@@ -102,5 +102,19 @@ const getSeries = async (req, res) => {
     }
 }
 
+const searchMovieSeries = async (req, res) => {
+    try{
+        const { query } = req.params;
+        const sendData = (tmdbRes) => {
+            res.status(200).json({"results" : tmdbRes.data.results});
+        }
+        await axios.get(tmdbURL + `3/search/multi?api_key=${tmdbApiKey}&query=${query}`)
+            .then(tmdbRes => tmdbRes ? sendData(tmdbRes) : res.status(500).json({ message: "Something went wrong in TMDB api response." }));
+    }
+    catch(error){
+        res.status(500).json({ message: "Something went wrong." });
+    }
+}
+
 module.exports = { getTrendingMovies, getTrendingSeries, getUpcomingMovies, getTopratedMovies, getTopratedSeries, 
-                    getMovie, getSeries }
+                    getMovie, getSeries, searchMovieSeries }

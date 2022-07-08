@@ -13,7 +13,7 @@ const login = async (req, res) => {
         if (!isPasswordCorrect)
             return res.status(401).json({ message: "Invalid credentials" });
 
-        const token = jwt.sign({ user: existingUser }, process.env.SECRET_KEY, {
+        const token = jwt.sign({ user: {email:existingUser.email, password:existingUser.password} }, process.env.SECRET_KEY, {
             expiresIn: process.env.TOKEN_LIFETIME,
         });
         res.status(200).json({ existingUser, token });
@@ -34,7 +34,8 @@ const signup = async (req, res) => {
         const result = await User.create({
             email: email,
             password: hashedPassword,
-            name: name
+            name: name,
+            profilePhoto: {}
         });
         const token = jwt.sign({ user: result }, process.env.SECRET_KEY, {
             expiresIn: process.env.TOKEN_LIFETIME,

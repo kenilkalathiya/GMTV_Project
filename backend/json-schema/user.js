@@ -32,6 +32,28 @@ const loginSchema = {
     },
 };
 
+const trackingSchema = {
+    type: "object",
+    required: ["msID", "addedDate", "media_type", "last_seasons_episodes", "seasons"],
+    properties: {
+        msID: {
+            type: "string"
+        },
+        media_type: {
+            type: "string"
+        },
+        addedDate: {
+            type: "string"
+        },
+        seasons: {
+            type: "number"
+        },
+        last_season_episodes:{
+            type: "number"
+        }
+    },
+};
+
 module.exports = {
-    loginSchema, signupSchema
+    loginSchema, signupSchema, trackingSchema
 };
