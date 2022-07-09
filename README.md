@@ -15,7 +15,7 @@ URL: http://165.232.181.83:8000
 (GET) /moviesSeries/movies/getmovie/{movieID} - to get movie details from ID
 (GET) /moviesSeries/series/getseries/{tvID}- to get series details from ID
 
-(GET) /search/{query} - to get search result
+(GET) /moviesSeries/search/{query} - to get search result
 
 # bearer token required in below APIs
 (GET) /user/userInfo/{userID} - to get user info

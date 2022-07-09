@@ -1,6 +1,6 @@
 const signupSchema = {
     type: "object",
-    required: ["email", "password", "name"],
+    required: ["email", "password", "first_name", "last_name"],
     properties: {
         email: {
             type: "string",
@@ -10,7 +10,11 @@ const signupSchema = {
             type: "string",
             minLength: 3,
         },
-        name: {
+        first_name: {
+            type: "string",
+            minLength: 3
+        },
+        last_name: {
             type: "string",
             minLength: 3
         }

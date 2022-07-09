@@ -24,7 +24,7 @@ const login = async (req, res) => {
 };
 
 const signup = async (req, res) => {
-    const { email, password, name } = req.body;
+    const { email, password, first_name, last_name } = req.body;
     try {
         const existingUser = await User.findOne({ email });
         if(existingUser){
@@ -34,8 +34,9 @@ const signup = async (req, res) => {
         const result = await User.create({
             email: email,
             password: hashedPassword,
-            name: name,
-            profilePhoto: {}
+            profilePhoto: {},
+            first_name:first_name,
+            last_name:last_name
         });
         const token = jwt.sign({ user: result }, process.env.SECRET_KEY, {
             expiresIn: process.env.TOKEN_LIFETIME,
