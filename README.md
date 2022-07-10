@@ -18,6 +18,7 @@ URL: http://165.232.181.83:8000
 (GET) /moviesSeries/search/{query} - to get search result
 
 # bearer token required in below APIs
+(GET) /user/checkTracking/{userID}/{msID} - to check movie/series is being tracked or not
 (GET) /user/userInfo/{userID} - to get user info
 (GET) /user/tracking/{userID} - to get tracking info of user
 (POST) /user/updatePhoto/{userID} - to update profile photo (body: profileImg)

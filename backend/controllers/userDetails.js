@@ -48,6 +48,8 @@ const addTrackingInfo = async (req, res) => {
     try {
         const { userID } = req.params;
         const { msID, media_type, addedDate, seasons, last_seasons_episodes, backdrop_path } = req.body;
+        const tracked = await TrackedInfo.find({ userID: userID, msID: msID });
+        if(tracked.length === 0){
         const postData = {
             userID: userID,
             msID: msID,
@@ -59,6 +61,11 @@ const addTrackingInfo = async (req, res) => {
         }
         await TrackedInfo.create(postData);
         res.status(200).json({ massage: "Added successfully." })
+        }
+        else{
+            res.status(500).json({ message: "This movie/series already added to tracking." });
+        }
+        
     }
     catch (error) {
         res.status(500).json({ message: "Something went wrong" });
@@ -76,4 +83,20 @@ const getUserTracking = async (req, res) => {
     }
 }
 
-module.exports = { updatePhoto, getUserDetails, addTrackingInfo, getUserTracking };
+const checkTracking = async (req, res) => {
+    try{
+        const { userID, msID } = req.params;
+        const tracked = await TrackedInfo.find({ userID: userID, msID: msID });
+        if(tracked.length === 0){
+            res.status(200).json({ "tracked": false });
+        }
+        else{
+            res.status(200).json({ "tracked": true });
+        }
+    }
+    catch(error){
+        res.status(500).json({ message: "Something went wrong" });
+    }
+}
+
+module.exports = { updatePhoto, getUserDetails, addTrackingInfo, getUserTracking, checkTracking };
