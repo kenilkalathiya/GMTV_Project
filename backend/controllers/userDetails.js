@@ -47,14 +47,15 @@ const getUserDetails = async (req, res) => {
 const addTrackingInfo = async (req, res) => {
     try {
         const { userID } = req.params;
-        const { msID, media_type, addedDate, seasons, last_seasons_episodes } = req.body;
+        const { msID, media_type, addedDate, seasons, last_seasons_episodes, backdrop_path } = req.body;
         const postData = {
             userID: userID,
             msID: msID,
             media_type: media_type,
             addedDate: addedDate,
             seasons: seasons,
-            last_seasons_episodes: last_seasons_episodes
+            last_seasons_episodes: last_seasons_episodes,
+            backdrop_path: backdrop_path
         }
         await TrackedInfo.create(postData);
         res.status(200).json({ massage: "Added successfully." })

@@ -38,7 +38,7 @@ const loginSchema = {
 
 const trackingSchema = {
     type: "object",
-    required: ["msID", "addedDate", "media_type", "last_seasons_episodes", "seasons"],
+    required: ["msID", "addedDate", "media_type", "last_seasons_episodes", "seasons", "backdrop_path"],
     properties: {
         msID: {
             type: "string"
@@ -54,6 +54,9 @@ const trackingSchema = {
         },
         last_season_episodes:{
             type: "number"
+        },
+        backdrop_path:{
+            type:"string"
         }
     },
 };
