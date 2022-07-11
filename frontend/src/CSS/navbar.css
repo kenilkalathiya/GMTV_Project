@@ -1,0 +1,75 @@
+* {
+  --lightbrown: rgb(255, 61, 84);
+  /* font-family: "Poppins", sans-serif; */
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  padding: 20px;
+  height: 40px;
+  z-index: 3;
+  justify-content: space-between;
+  /*Animation*/
+  transition-timing-function: ease-in;
+  transition: all 0.5s;
+}
+.nav__black {
+  background-color: #111;
+  box-shadow: 0 10px 8px 0px rgb(32, 32, 32);
+}
+
+.nav_logo {
+  position: fixed;
+  margin: 0;
+  top: -10px;
+  height: 100px;
+  width: 100px;
+  object-fit: contain;
+  background-image: url(../Assests/logo1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.nav_login,
+.nav_signup {
+  width: 80px;
+  position: fixed;
+  object-fit: contain;
+  color: black;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 8px 10px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 3px;
+  background-color: var(--lightbrown);
+  color: black;
+}
+
+.nav_login {
+  right: 120px;
+}
+
+.nav_signup {
+  right: 20px;
+}
+
+.profile {
+  position: fixed;
+  right: 20px;
+  background-image: url("../Assests/profile.png");
+  width: 50px;
+  height: 50px;
+  background-size: cover;
+  background-position: center center;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+}
+
+
